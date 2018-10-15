@@ -1,0 +1,37 @@
+{
+  "name": "Terraforming App",
+  "description": "Run Terraform as a Heroku app",
+  "keywords": [
+    "terraform",
+    "infrastructure",
+    "tools",
+    "automation"
+  ],
+  "repository": "https://github.com/mars/terraforming-app.git",
+  "success_url": "https://github.com/mars/terraforming-app/blob/master/README.md",
+  "buildpacks": [{
+    "url": "https://github.com/mars/terraforming-buildpack.git"
+  }],
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "env": {
+    "TERRAFORM_BIN_URL": {
+      "description": "The source URL for the terraform binary (preset for Postgres backend support)",
+      "value": "https://terraforming-buildpack.s3.amazonaws.com/terraform_0.11.9-pg.01_linux_amd64.zip",
+      "required": false
+    },
+    "HEROKU_API_KEY": {
+      "description": "Authorization token for the Terraform Heroku provider",
+      "required": false
+    },
+    "HEROKU_EMAIL": {
+      "description": "Owner of the Heroku authorization token",
+      "required": false
+    },
+    "TF_VAR_example_app_name": {
+      "description": "Name of app created by the example config in `main.tf`",
+      "required": false
+    }
+  }
+}
