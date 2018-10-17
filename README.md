@@ -29,7 +29,7 @@ heroku addons:create heroku-postgresql
 # Use our fork of Terraform that supports Postgres backend
 # https://github.com/hashicorp/terraform/pull/19070
 # 
-heroku config:set TERRAFORM_BIN_URL=https://terraforming-buildpack.s3.amazonaws.com/terraform_0.11.9-pg.01_linux_amd64.zip
+heroku config:set TERRAFORM_BIN_URL=https://terraforming-buildpack.s3.amazonaws.com/terraform_0.11.9-pg.02_linux_amd64.zip
 
 # Set credentials for the Terraform Heroku provider
 heroku config:set HEROKU_API_KEY=xxxxx HEROKU_EMAIL=x@example.com
