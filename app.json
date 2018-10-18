@@ -10,7 +10,7 @@
   "repository": "https://github.com/mars/terraforming-app.git",
   "success_url": "https://github.com/mars/terraforming-app/blob/master/README.md",
   "buildpacks": [{
-    "url": "https://github.com/mars/terraforming-buildpack.git"
+    "url": "mars/terraforming"
   }],
   "addons": [
     "heroku-postgresql"

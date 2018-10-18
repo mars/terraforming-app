@@ -23,7 +23,7 @@ export APP_NAME=my-app
 git clone https://github.com/mars/terraforming-app
 cd terraforming-app/
 
-heroku create $APP_NAME --buildpack https://github.com/mars/terraforming-buildpack
+heroku create $APP_NAME --buildpack mars/terraforming
 heroku addons:create heroku-postgresql
 
 # Use our fork of Terraform that supports Postgres backend
