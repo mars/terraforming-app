@@ -1,1 +1,0 @@
-terraform: bin/terraform
