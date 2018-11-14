@@ -11,7 +11,7 @@ heroku run terraform apply
 
 🔬🚧 This is a community proof-of-concept, [MIT license](LICENSE), provided "as is", without warranty of any kind.
 
-🌲🔥 To enable [Heroku Postgres](https://www.heroku.com/postgres) as the Terraform backend, this app uses the `terraform` binary built from an unmerged pull request to Terraform (see: [hashicorp/terraform #19070](https://github.com/hashicorp/terraform/pull/19070)).
+🌲🔥 To enable [Heroku Postgres](https://www.heroku.com/postgres) as the Terraform backend, this app uses the `terraform` binary built from an unmerged pull request [hashicorp/terraform #19070](https://github.com/hashicorp/terraform/pull/19070), [mars/terraform release v0.11.9-pg.02](https://github.com/mars/terraform/releases/tag/v0.11.9-pg.02).
 
 Set-up
 ------
