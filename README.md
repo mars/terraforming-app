@@ -22,7 +22,7 @@ Terraform works best with Heroku when contained by a team.
 
 ▶️ [Create a team](https://dashboard.heroku.com/teams/new) or use an existing team.
 
-### Create Heroku "Machine" Account
+### Create Heroku Account for Terraform
 
 Terraform uses an authorization token (secret key) access the Heroku API.
 
