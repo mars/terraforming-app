@@ -1,3 +1,7 @@
+terraform {
+  backend "pg" {}
+}
+
 provider "heroku" {}
 
 provider "heroku" {}
