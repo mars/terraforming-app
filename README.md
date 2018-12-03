@@ -49,6 +49,10 @@ Create a new app for Terraform by clicking the "Deploy" button below. On the for
 
 Create a local working copy of the Heroku app, to begin committing & applying Terraform configurations.
 
+🌲🔥 To enable the [Postgres backend](https://github.com/mars/terraform/blob/v0.11.9-pg.02/website/docs/backends/types/pg.html.md) for Terraform, this app uses the `terraform` binary built from an unmerged pull request to Terraform (see: [hashicorp/terraform #19070](https://github.com/hashicorp/terraform/pull/19070)).
+
+🌲🔥🔥 To enable the [Build resource](https://github.com/mars/terraform-provider-heroku/blob/v1.6.0-build_resource.01/website/docs/r/build.html.markdown) for Terraform Heroku provider, this app uses the `terraform-provider-heroku` plugin binary built from an unmerged pull request to the provider (see: [terraform-providers/terraform-provider-heroku #149](https://github.com/terraform-providers/terraform-provider-heroku/pull/149)).
+
 ✏️ *Replace `$APP_NAME` with the value of the **App name** created above, like `teamname-terraform`*
 
 ```bash
@@ -123,7 +127,68 @@ git push heroku master
 export DATABASE_URL=`heroku config:get DATABASE_URL`
 $GOPATH/src/github.com/hashicorp/terraform/pkg/darwin_amd64/terraform init -backend-config="conn_str=$DATABASE_URL"
 
-# Continue using Terraform with the Heroku app's Postgres backend
-$GOPATH/src/github.com/hashicorp/terraform/pkg/darwin_amd64/terraform plan
-$GOPATH/src/github.com/hashicorp/terraform/pkg/darwin_amd64/terraform apply
+Running apply, you'll see output like this:
+
+```
+$ heroku run terraform apply
+Running terraform apply on ⬢ terraforming... up, run.3842 (Free)
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  + heroku_app.example
+      id:                <computed>
+      all_config_vars.%: <computed>
+      config_vars.#:     <computed>
+      git_url:           <computed>
+      heroku_hostname:   <computed>
+      internal_routing:  <computed>
+      name:              "mars-terraforming-example"
+      region:            "us"
+      stack:             <computed>
+      uuid:              <computed>
+      web_url:           <computed>
+
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: 
+```
+
+Terraform waits here, to verify the actions Terraform will take. Type `yes` to proceed.
+
+```
+heroku_app.example: Creating...
+  all_config_vars.%: "" => "<computed>"
+  config_vars.#:     "" => "<computed>"
+  git_url:           "" => "<computed>"
+  heroku_hostname:   "" => "<computed>"
+  internal_routing:  "" => "<computed>"
+  name:              "" => "mars-terraforming-example"
+  region:            "" => "us"
+  stack:             "" => "<computed>"
+  uuid:              "" => "<computed>"
+  web_url:           "" => "<computed>"
+heroku_app.example: Creation complete after 1s (ID: mars-terraforming-example)
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+Once the run completes, you can fetch outputs from the configuration, like the app URL from the included example:
+
+```bash
+heroku run terraform show example_app_url
+```
+
+With the included example, you may easily view the app's build log using curl:
+
+```bash
+curl "$(heroku run terraform output example_app_build_log_url)"
 ```
