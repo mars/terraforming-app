@@ -146,7 +146,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 Once the run completes, you can fetch outputs from the configuration, like the app URL from the included example:
 
 ```bash
-heroku run terraform show example_app_url
+heroku run terraform output example_app_url
 ```
 
 With the included example, you may easily view the app's build log using curl:
