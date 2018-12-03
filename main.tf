@@ -1,3 +1,7 @@
+terraform {
+  backend "pg" {}
+}
+
 provider "heroku" {}
 
 variable "example_app_name" {
