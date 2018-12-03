@@ -68,13 +68,17 @@ Once [set-up](#user-content-set-up) is complete, you can begin using Terraform!
 
 Use the [Heroku provider](https://www.terraform.io/docs/providers/heroku/) and [others](https://www.terraform.io/docs/providers/) to build-up configuration in `*.tf` files.
 
-The included `main.tf` is required to deploy successfully. The buildpack will not work without `main.tf`. You can replace its content as needed.
-
 ### Push your changes
+
+✏️ *Replace `$APP_NAME` in the following commands with your own unique app name.*
 
 ```bash
 git add .
 git commit -m 'Initial configuration'
+
+# The included `main.tf` example requires the `example_app_name` variable
+heroku config:set TF_VAR_example_app_name=$APP_NAME
+
 git push heroku master
 ```
 
@@ -124,7 +128,7 @@ Do you want to perform these actions?
   Enter a value: 
 ```
 
-Terraform waits here, to verify the actions Terraform will take. Type `yes` to proceed.
+🚦 Terraform waits here, to verify the actions it will take. **Type `yes` to proceed.**
 
 ```
 heroku_app.example: Creating...
@@ -143,7 +147,7 @@ heroku_app.example: Creation complete after 1s (ID: mars-terraforming-example)
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-Once the run completes, you can fetch outputs from the configuration, like the app URL from the included example:
+⏳ Once the run completes, you can fetch outputs from the configuration, like the app URL from the included example:
 
 ```bash
 heroku run terraform output example_app_url
