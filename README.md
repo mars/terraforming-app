@@ -125,7 +125,7 @@ Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
 
-  Enter a value: 
+  Enter a value:
 ```
 
 🚦 Terraform waits here, to verify the actions it will take. **Type `yes` to proceed.**
@@ -174,7 +174,7 @@ heroku addons:create heroku-postgresql
 
 # Use our fork of Terraform that supports Postgres backend
 # https://github.com/hashicorp/terraform/pull/19070
-# 
+#
 heroku config:set TERRAFORM_BIN_URL=https://terraforming-buildpack.s3.amazonaws.com/terraform_0.11.9-pg.02_linux_amd64.zip
 
 # Set credentials for the Terraform Heroku provider
