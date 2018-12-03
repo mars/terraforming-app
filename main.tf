@@ -28,3 +28,7 @@ resource "heroku_formation" "example" {
 output "example_app_url" {
   value = "https://${heroku_app.example.name}.herokuapp.com"
 }
+
+output "example_app_build_log_url" {
+  value = "${heroku_build.example.output_stream_url}"
+}
