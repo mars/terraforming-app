@@ -16,7 +16,7 @@ resource "heroku_app" "example" {
 }
 
 resource "heroku_build" "example" {
-  app = "${heroku_app.example.id}"
+  app = "${heroku_app.example.name}"
 
   source = {
     path = "app/"
@@ -24,7 +24,7 @@ resource "heroku_build" "example" {
 }
 
 resource "heroku_formation" "example" {
-  app        = "${heroku_app.example.id}"
+  app        = "${heroku_app.example.name}"
   type       = "web"
   quantity   = 1
   size       = "Standard-1x"
