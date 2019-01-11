@@ -13,8 +13,6 @@ heroku run terraform apply
 
 🌲🔥 To enable the [Postgres backend](https://github.com/mars/terraform/blob/v0.11.9-pg.02/website/docs/backends/types/pg.html.md) for Terraform, this app uses the `terraform` binary built from an unmerged pull request to Terraform (see: [hashicorp/terraform #19070](https://github.com/hashicorp/terraform/pull/19070)).
 
-🌲🔥🔥 To enable the [Build resource](https://github.com/mars/terraform-provider-heroku/blob/v1.6.0-build_resource.02/website/docs/r/build.html.markdown) for Terraform Heroku provider, this app uses the `terraform-provider-heroku` plugin binary built from an unmerged pull request to the provider (see: [terraform-providers/terraform-provider-heroku #149](https://github.com/terraform-providers/terraform-provider-heroku/pull/149)).
-
 Set-up
 ------
 

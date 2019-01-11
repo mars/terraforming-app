@@ -2,9 +2,9 @@ terraform {
   backend "pg" {}
 }
 
-provider "heroku" {}
-
-provider "heroku" {}
+provider "heroku" {
+  version = "~> 1.7"
+}
 
 variable "example_app_name" {
   description = "Name of the Heroku app provisioned as an example"
