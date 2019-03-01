@@ -32,6 +32,11 @@
     "TF_VAR_example_app_name": {
       "description": "Name of app created by the example config in `main.tf`",
       "required": false
+    },
+    "TERRAFORM_WORKSPACE_NAME": {
+      "description": "Name of the Terraform workspace to store state",
+      "value": "default",
+      "required": true
     }
   }
 }
