@@ -1,9 +1,9 @@
 terraform {
-  backend "pg" {}
+  backend "pg" {
+  }
 }
 
 provider "heroku" {
-  version = "~> 1.7"
 }
 
 variable "example_app_name" {
@@ -11,12 +11,12 @@ variable "example_app_name" {
 }
 
 resource "heroku_app" "example" {
-  name = "${var.example_app_name}"
+  name   = var.example_app_name
   region = "us"
 }
 
 resource "heroku_build" "example" {
-  app = "${heroku_app.example.name}"
+  app = heroku_app.example.name
 
   source = {
     path = "app/"
@@ -24,11 +24,11 @@ resource "heroku_build" "example" {
 }
 
 resource "heroku_formation" "example" {
-  app        = "${heroku_app.example.name}"
+  app        = heroku_app.example.name
   type       = "web"
   quantity   = 1
   size       = "Standard-1x"
-  depends_on = ["heroku_build.example"]
+  depends_on = [heroku_build.example]
 }
 
 output "example_app_url" {
@@ -36,5 +36,6 @@ output "example_app_url" {
 }
 
 output "example_app_build_log_url" {
-  value = "${heroku_build.example.output_stream_url}"
+  value = heroku_build.example.output_stream_url
 }
+

@@ -9,3 +9,7 @@ then
   cat terraform_init_output.log
   exit 1
 fi
+
+# Ensure the workspace exists
+TERRAFORM_WORKSPACE_NAME="${TERRAFORM_WORKSPACE_NAME:-default}"
+terraform workspace new $TERRAFORM_WORKSPACE_NAME
