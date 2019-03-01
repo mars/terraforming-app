@@ -1,7 +1,9 @@
 Terraforming 🌱 Heroku app
 ===========================
 
-[Terraform](https://www.terraform.io/) as a [Heroku](https://www.heroku.com/) app.
+[Terraform](https://www.terraform.io/) [0.12 Beta 1](https://www.hashicorp.com/blog/announcing-terraform-0-1-2-beta1) as a [Heroku](https://www.heroku.com/) app.
+
+Includes a [0.12 dev snapshot](http://terraform-0.12.0-dev-snapshots.s3-website-us-west-2.amazonaws.com/terraform-provider-heroku/) of [Heroku Provider version 1.8.0](https://www.terraform.io/docs/providers/heroku/index.html).
 
 Run Terraform CLI in the cloud:
 
