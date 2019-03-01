@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "heroku" {
-  version = "~> 1.7"
+  version = "~> 1.8"
 }
 
 variable "example_app_name" {
@@ -11,7 +11,7 @@ variable "example_app_name" {
 }
 
 resource "heroku_app" "example" {
-  name = "${var.example_app_name}"
+  name   = "${var.example_app_name}"
   region = "us"
 }
 

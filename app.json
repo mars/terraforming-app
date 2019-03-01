@@ -18,7 +18,7 @@
   "env": {
     "TERRAFORM_BIN_URL": {
       "description": "The source URL for the terraform binary (preset for Postgres backend support)",
-      "value": "https://terraforming-buildpack.s3.amazonaws.com/terraform_0.11.9-pg.02_linux_amd64.zip",
+      "value": "https://releases.hashicorp.com/terraform/0.12.0-beta1/terraform_0.12.0-beta1_linux_amd64.zip",
       "required": false
     },
     "HEROKU_API_KEY": {
