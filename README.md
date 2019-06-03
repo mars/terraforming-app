@@ -1,9 +1,7 @@
 Terraforming 🌱 Heroku app
 ===========================
 
-[Terraform](https://www.terraform.io/) [0.12 Beta 1](https://www.hashicorp.com/blog/announcing-terraform-0-1-2-beta1) as a [Heroku](https://www.heroku.com/) app.
-
-Includes a [0.12 dev snapshot](http://terraform-0.12.0-dev-snapshots.s3-website-us-west-2.amazonaws.com/terraform-provider-heroku/) of [Heroku Provider version 1.8.0](https://www.terraform.io/docs/providers/heroku/index.html).
+[Terraform](https://www.terraform.io/) [0.12](https://www.hashicorp.com/blog/announcing-terraform-0-12) as a [Heroku](https://www.heroku.com/) app.
 
 Run Terraform CLI in the cloud:
 
@@ -13,7 +11,7 @@ heroku run terraform apply
 
 🔬🚧 This is a community proof-of-concept, [MIT license](LICENSE), provided "as is", without warranty of any kind.
 
-🌲🔥 To enable the [Postgres backend](https://github.com/mars/terraform/blob/postgres-backend/website/docs/backends/types/pg.html.md) for Terraform, this app uses the [`terraform` 0.12 Beta binary](https://releases.hashicorp.com/terraform/0.12.0-beta1/), which includes this new feature (see: [hashicorp/terraform #19070](https://github.com/hashicorp/terraform/pull/19070)).
+⭐️💁‍♀️ To use the [Terraform Postgres backend](https://www.terraform.io/docs/backends/types/pg.html), this app requires [Terraform 0.12](https://www.hashicorp.com/blog/announcing-terraform-0-12).
 
 Set-up
 ------
@@ -172,10 +170,8 @@ cd terraforming-app/
 heroku create $APP_NAME --buildpack mars/terraforming
 heroku addons:create heroku-postgresql
 
-# Use 0.12 Beta of Terraform that supports Postgres backend
-# https://github.com/hashicorp/terraform/pull/19070
-#
-heroku config:set TERRAFORM_BIN_URL=https://releases.hashicorp.com/terraform/0.12.0-beta1/terraform_0.12.0-beta1_linux_amd64.zip
+# Use Terraform 0.12 to support Postgres backend
+heroku config:set TERRAFORM_BIN_URL=https://releases.hashicorp.com/terraform/0.12.0/terraform_0.12.0_linux_amd64.zip
 
 # Set credentials for the Terraform Heroku provider
 heroku config:set HEROKU_API_KEY=xxxxx HEROKU_EMAIL=x@example.com
@@ -188,16 +184,31 @@ git push heroku master
 
 ### Run Terraform locally w/ Heroku Postgres backend
 
-🌲🔥 Requires using [Terraform 0.12 Beta](https://www.hashicorp.com/blog/announcing-terraform-0-1-2-beta1).
-
 ```bash
 # First-time for each terminal
 export DATABASE_URL=`heroku config:get DATABASE_URL`
-terraform init -backend-config="conn_str=$DATABASE_URL"
-# …or use a local database with SSL disabled
-terraform init -backend-config="conn_str=postgres://localhost/terraform_backend?sslmode=disable"
 
-# Continue using Terraform with the Heroku app's Postgres backend
-terraform plan
+# First-time for each project
+terraform init -backend-config="conn_str=$DATABASE_URL"
+
+# Then, apply & destroy as you like.
 terraform apply
+terraform destroy
+```
+
+### Run Terraform locally w/ local Postgres backend
+
+```bash
+# Create the local database using Postgres Client tool
+createdb terraform_backend
+
+# First-time for each terminal
+export DATABASE_URL='postgres://localhost/terraform_backend?sslmode=disable'
+
+# First-time for each project
+terraform init -backend-config="conn_str=$DATABASE_URL"
+
+# Then, apply & destroy as you like.
+terraform apply
+terraform destroy
 ```
