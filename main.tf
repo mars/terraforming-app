@@ -19,7 +19,7 @@ resource "heroku_app" "example" {
 resource "heroku_build" "example" {
   app = heroku_app.example.name
 
-  source = {
+  source {
     path = "app/"
   }
 }
