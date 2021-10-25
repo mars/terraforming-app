@@ -1,7 +1,7 @@
 Terraforming 🌱 Heroku app
 ===========================
 
-[Terraform](https://www.terraform.io/) [0.12](https://www.hashicorp.com/blog/announcing-terraform-0-12) as a [Heroku](https://www.heroku.com/) app.
+[Terraform](https://www.terraform.io/) [1.0](https://www.hashicorp.com/blog/announcing-terraform-0-12) as a [Heroku](https://www.heroku.com/) app.
 
 Run Terraform CLI in the cloud:
 
@@ -11,7 +11,7 @@ heroku run terraform apply
 
 🔬🚧 This is a community proof-of-concept, [MIT license](LICENSE), provided "as is", without warranty of any kind.
 
-⭐️💁‍♀️ To use the [Terraform Postgres backend](https://www.terraform.io/docs/backends/types/pg.html), this app requires [Terraform 0.12](https://www.hashicorp.com/blog/announcing-terraform-0-12).
+⭐️💁‍♀️ Uses the [Terraform Postgres backend](https://www.terraform.io/docs/backends/types/pg.html).
 
 Set-up
 ------
